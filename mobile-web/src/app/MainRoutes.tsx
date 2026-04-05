@@ -1,6 +1,7 @@
 // ABOUTME: Route-switch wrapper for the mobile-web main view.
 // ABOUTME: Keeps routing isolated from AppShell so it can be dropped in with a one-line edit.
 import { ChannelsListPage } from "../features/channels/ChannelsListPage";
+import { HomeFeedPage } from "../features/feed/HomeFeedPage";
 import { useRoute } from "../lib/router";
 
 export function MainRoutes() {
@@ -11,8 +12,8 @@ export function MainRoutes() {
     return <ChannelsListPage />;
   }
 
-  if (pathname === "/feed") {
-    return <ComingSoon title="Feed" description="Home feed lands next." />;
+  if (pathname === "/feed" || pathname.startsWith("/feed")) {
+    return <HomeFeedPage />;
   }
 
   if (pathname === "/profile") {
