@@ -102,8 +102,18 @@ services:
     image: quay.io/keycloak/keycloak:26.0
     container_name: sprout-keycloak
     command: start-dev --http-port=8080
+    depends_on:
+      postgres:
+        condition: service_healthy
     environment:
-      KC_DB: dev-mem
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: sprout
+      KC_DB_PASSWORD: sprout_dev
+      KC_HTTP_RELATIVE_PATH: /auth
+      KC_HOSTNAME_URL: https://sprout.admin.divine.video/auth
+      KC_HOSTNAME_STRICT: "false"
+      KC_PROXY_HEADERS: xforwarded
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
