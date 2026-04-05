@@ -4,6 +4,8 @@ import { hasNip07 } from "../lib/capabilities";
 import { DevRelayPane } from "./DevRelayPane";
 import { parseConnectUri, Nip46Client } from "../nostr/nip46Client";
 import { LoginPage } from "../features/auth/LoginPage";
+import { MainRoutes } from "./MainRoutes";
+import { BottomNav } from "./BottomNav";
 // external signer integration removed
 
 export function AppShell() {
@@ -53,16 +55,17 @@ export function AppShell() {
         )}
 
       </header>
-      <main className="flex-1 mx-auto max-w-screen-md px-4 py-6 space-y-4">
+      <main className="flex-1 mx-auto w-full max-w-screen-md px-4 py-6 space-y-4">
         {showLogin ? (
           <LoginPage />
         ) : (
           <>
-            <p className="text-muted-foreground text-sm">Blank shell. Shared UI import working.</p>
+            <MainRoutes />
             {(import.meta as any).env?.DEV && showDev && <DevRelayPane />}
           </>
         )}
       </main>
+      {!showLogin && <BottomNav />}
     </div>
   );
 }
