@@ -100,8 +100,10 @@ describe("useChannels", () => {
     await waitFor(() => expect(result.current.error).not.toBeNull());
 
     await result.current.refetch();
-    await waitFor(() => expect(result.current.loading).toBe(false));
-    expect(result.current.error).toBeNull();
+    await waitFor(() => {
+      expect(result.current.loading).toBe(false);
+      expect(result.current.error).toBeNull();
+    });
     expect(result.current.channels.map((c) => c.id)).toEqual(["a"]);
   });
 });

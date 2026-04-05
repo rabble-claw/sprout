@@ -87,8 +87,10 @@ describe("useTokens", () => {
     const { result } = renderHook(() => useTokens());
     await waitFor(() => expect(result.current.error).not.toBeNull());
     await result.current.refetch();
-    await waitFor(() => expect(result.current.loading).toBe(false));
-    expect(result.current.error).toBeNull();
+    await waitFor(() => {
+      expect(result.current.loading).toBe(false);
+      expect(result.current.error).toBeNull();
+    });
     expect(result.current.tokens.map((t) => t.id)).toEqual(["a"]);
   });
 });
