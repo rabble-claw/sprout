@@ -10,27 +10,33 @@
     "lint": "biome lint .",
     "check": "biome check .",
     "format": "biome format --write .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
+    "@noble/hashes": "^1.4.0",
     "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "nostr-tools": "^2.7.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "tailwind-merge": "^3.5.0",
-    "nostr-tools": "^2.7.0",
-    "@noble/hashes": "^1.4.0"
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.6",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
     "autoprefixer": "^10.4.27",
+    "happy-dom": "^20.8.9",
     "postcss": "^8.5.8",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.8.3",
-    "vite": "^7.0.4"
+    "vite": "^7.0.4",
+    "vitest": "^4.1.2"
   }
 }
