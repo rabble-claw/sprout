@@ -1,4 +1,4 @@
-// ABOUTME: Mobile bottom tab bar with Channels / Feed / Profile sections.
+// ABOUTME: Mobile bottom tab bar with Channels / Feed / Search / Profile sections.
 // ABOUTME: Highlights the active tab by matching the current pathname prefix.
 import type { ReactNode } from "react";
 import { navigate, useRoute } from "../lib/router";
@@ -25,6 +25,13 @@ const TABS: Tab[] = [
     path: "/feed",
     prefixes: ["/feed"],
     icon: FeedIcon,
+  },
+  {
+    id: "search",
+    label: "Search",
+    path: "/search",
+    prefixes: ["/search"],
+    icon: SearchIcon,
   },
   {
     id: "profile",
@@ -105,6 +112,15 @@ function ProfileIcon() {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
       <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>
   );
 }

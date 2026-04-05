@@ -6,6 +6,7 @@ import { isActive, _testing } from "./BottomNav";
 const { TABS } = _testing;
 const channelsTab = TABS.find((t) => t.id === "channels")!;
 const feedTab = TABS.find((t) => t.id === "feed")!;
+const searchTab = TABS.find((t) => t.id === "search")!;
 const profileTab = TABS.find((t) => t.id === "profile")!;
 
 describe("isActive", () => {
@@ -36,5 +37,12 @@ describe("isActive", () => {
     expect(isActive(profileTab, "/profile")).toBe(true);
     expect(isActive(profileTab, "/profile/tokens")).toBe(true);
     expect(isActive(profileTab, "/feed")).toBe(false);
+  });
+
+  it("search tab matches /search only", () => {
+    expect(isActive(searchTab, "/search")).toBe(true);
+    expect(isActive(searchTab, "/search?q=foo")).toBe(true);
+    expect(isActive(searchTab, "/")).toBe(false);
+    expect(isActive(searchTab, "/channels")).toBe(false);
   });
 });
