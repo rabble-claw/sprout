@@ -2,6 +2,7 @@
 // ABOUTME: Keeps routing isolated from AppShell so it can be dropped in with a one-line edit.
 import { ChannelsListPage } from "../features/channels/ChannelsListPage";
 import { HomeFeedPage } from "../features/feed/HomeFeedPage";
+import { ProfilePage } from "../features/profile/ProfilePage";
 import { useRoute } from "../lib/router";
 
 export function MainRoutes() {
@@ -16,8 +17,8 @@ export function MainRoutes() {
     return <HomeFeedPage />;
   }
 
-  if (pathname === "/profile") {
-    return <ComingSoon title="Profile" description="Profile + tokens management lands next." />;
+  if (pathname === "/profile" || pathname.startsWith("/profile")) {
+    return <ProfilePage />;
   }
 
   return <ComingSoon title="Not found" description={`No route matches ${pathname}.`} />;
