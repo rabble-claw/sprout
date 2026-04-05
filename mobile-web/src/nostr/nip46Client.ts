@@ -63,7 +63,7 @@ export class Nip46Client {
     await this.pool.publish(this.relays, finalized as Event);
 
     return await new Promise((resolve, reject) => {
-      const sub = this.pool.subscribeMany(
+      const sub = (this.pool as any).subscribeMany(
         this.relays,
         [{ kinds: [24133], authors: [this.remotePubkey], "#p": [this.pubkey] }],
         {
