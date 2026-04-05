@@ -2,16 +2,13 @@ import { Button } from "@sprout-shared/ui/button";
 import { useEffect, useState } from "react";
 import { hasNip07 } from "../lib/capabilities";
 import { DevRelayPane } from "./DevRelayPane";
-import { parseConnectUri, Nip46Client } from "../nostr/nip46Client";
 import { LoginPage } from "../features/auth/LoginPage";
 import { MainRoutes } from "./MainRoutes";
 import { BottomNav } from "./BottomNav";
-// external signer integration removed
 
 export function AppShell() {
   const [nip07, setNip07] = useState(() => hasNip07());
   const [showDev, setShowDev] = useState(false);
-  const [signerStatus, setSignerStatus] = useState<string>("");
 
   useEffect(() => {
     const t = window.setInterval(() => setNip07(hasNip07()), 1500);
@@ -50,10 +47,6 @@ export function AppShell() {
             Nostr extension not detected. Live updates via WebSocket are disabled.
           </div>
         )}
-        {signerStatus && (
-          <div className="bg-blue-50 text-blue-900 text-xs px-4 py-2 border-t">{signerStatus}</div>
-        )}
-
       </header>
       <main className="flex-1 mx-auto w-full max-w-screen-md px-4 py-6 space-y-4">
         {showLogin ? (
